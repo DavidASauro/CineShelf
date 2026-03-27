@@ -1,22 +1,50 @@
-import MovieTable from "./components/MovieTable";
-import { TMDBApiResponseType } from "./types/TMDBApiResponse";
+import type {
+  TMDBMovieResponseType,
+  TMDBTvShowResponseType,
+} from "@/types/TMDBApiResponse";
+import MediaTable from "../components/MediaTable";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
+const headers = {
+  Authorization: `Bearer ${process.env.NEXT_TMDB_ACCESS_TOKEN}`,
+  accept: "application/json",
+};
 
 export default async function Home() {
-  const url =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_TMDB_ACCESS_TOKEN}`,
-      accept: "application/json",
-    },
-  });
-  const movieData: TMDBApiResponseType = await res.json();
+  const [trendingMovies, trendingShows]: [
+    TMDBMovieResponseType,
+    TMDBTvShowResponseType,
+  ] = await Promise.all([
+    fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+      { headers },
+    ).then((res) => res.json()),
+    fetch("https://api.themoviedb.org/3/trending/tv/day", { headers }).then(
+      (res) => res.json(),
+    ),
+  ]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main>
-        <h1 className="text-center">CineShelf</h1>
-        <MovieTable movies={movieData.results} />
-      </main>
+    <div>
+      <h1 className="text-center">CineShelf</h1>
+      <div className="flex flex-1 flex-row justify-center gap-1">
+        <Link href="/findmovie">
+          <Button>Find a Movie</Button>
+        </Link>
+        <Link href="/findshow">
+          <Button>Find a Show</Button>
+        </Link>
+      </div>
+
+      <section className="flex flex-col flex-1 justify-center p-10">
+        <h1 className="text-center">Trending Movies</h1>
+        <MediaTable media={trendingMovies.results} />
+      </section>
+      <section className="flex flex-col flex-1 justify-center p-10">
+        <h1 className="text-center">Trending Shows</h1>
+        <MediaTable media={trendingShows.results} />
+      </section>
     </div>
   );
 }
