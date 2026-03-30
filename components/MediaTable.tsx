@@ -10,14 +10,9 @@ type MediaProps = {
 
 const MediaTable = ({ media, type = "movie" }: MediaProps) => {
   return (
-    <div className="grid grid-cols-auto-fill max-w-7xl mx-auto w-full gap-2 justify-items-center">
+    <div className="flex flex-wrap gap-2 justify-center">
       {media.map((item) => (
-        <Link
-          key={item.id}
-          href={`/${type}/${item.id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link key={item.id} href={`/${type}/${item.id}`}>
           <MediaCard
             picture={`https://image.tmdb.org/t/p/original${item.poster_path}`}
             title={"title" in item ? item.title : item.name}

@@ -36,7 +36,7 @@ const MovieFilters = () => {
         ? `&with_genres=${selectedGenres.join(",")}`
         : "";
     const res = await fetch(
-      `/api/movies?from=${from}&to=${to}&page=${currentPage}${genreParam}`,
+      `/api/movie?from=${from}&to=${to}&page=${currentPage}${genreParam}`,
     );
     const data: TMDBMovieResponseType = await res.json();
     setMovies(data.results);
@@ -99,7 +99,7 @@ const MovieFilters = () => {
           </PaginationContent>
         </Pagination>
       </section>
-      <section className="max-w-4xl mx-auto w-full mt-5">
+      <section className="container flex mx-auto mt-5">
         {loading ? (
           <p className="text-center align-middle">Loading...</p>
         ) : (

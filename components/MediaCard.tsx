@@ -12,7 +12,7 @@ const MediaCard = ({ picture, title }: MediaCardProps) => {
         src={picture}
         alt={title}
         fill
-        sizes="(max-width: 640px) 50vw, 200px"
+        sizes="(max-width: 768px) 33vw, 16vw"
         className="object-cover"
         loading="eager"
       />

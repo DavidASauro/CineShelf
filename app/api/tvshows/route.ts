@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_TMDB_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
         accept: "application/json",
       },
       next: {

@@ -1,7 +1,7 @@
-export type Movie = {
+export interface Movie {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
+  genres: GenreObject[];
   id: number;
   original_language: string;
   overview: string;
@@ -12,4 +12,13 @@ export type Movie = {
   video: boolean;
   vote_average: number;
   vote_count: number;
-};
+  budget: number;
+  imdb_id: string;
+  runtime: number;
+  revenue: number;
+}
+
+interface GenreObject {
+  id: number;
+  name: string;
+}

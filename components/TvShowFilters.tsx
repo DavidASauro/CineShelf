@@ -99,7 +99,7 @@ const TvShowFilters = () => {
           </PaginationContent>
         </Pagination>
       </section>
-      <section className="max-w-4xl mx-auto w-full mt-5">
+      <section className="container flex mx-auto mt-5">
         {loading ? (
           <p className="text-center align-middle">Loading...</p>
         ) : (
