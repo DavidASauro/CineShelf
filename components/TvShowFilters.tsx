@@ -103,7 +103,7 @@ const TvShowFilters = () => {
         {loading ? (
           <p className="text-center align-middle">Loading...</p>
         ) : (
-          <MediaTable media={show} type="tvshow" />
+          <MediaTable media={show} type="tv" />
         )}
       </section>
     </div>
