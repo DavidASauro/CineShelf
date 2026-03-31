@@ -5,7 +5,7 @@ import Link from "next/link";
 
 type MediaProps = {
   media: Movie[] | TvShow[];
-  type?: "movie" | "tvshow";
+  type?: "movie" | "tv";
 };
 
 const MediaTable = ({ media, type = "movie" }: MediaProps) => {

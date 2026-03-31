@@ -70,50 +70,50 @@ const MoviePage = async ({ params }: { params: Promise<{ id: string }> }) => {
           {/* Release Date, Run Time, Genre Tags, Budget, Revenue  */}
           <div className="flex flex-col items-center flex-1 bg-card rounded-2xl p-10 gap-5">
             <h2 className="text-2xl">Overview</h2>
-
-            <div className="flex flex-wrap justify-center gap-5">
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaCalendarAlt className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  Release Date
-                </span>
-                <span>{movie.release_date}</span>
-              </div>
-
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaClock className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Runtime</span>
-                <span>{movie.runtime} min</span>
-              </div>
-
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaMoneyBillWave className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Budget</span>
-                <span>${movie.budget.toLocaleString()}</span>
-              </div>
-
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaChartLine className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">Revenue</span>
-                <span>${movie.revenue.toLocaleString()}</span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-2">
-              {movie.genres.map((genre) => (
-                <span
-                  className="flex bg-secondary rounded-lg px-3 py-1 text-sm gap-2"
-                  key={genre.id}
-                >
-                  {genre.name}
-                  <FaTags className="text-muted-foreground self-center" />
-                </span>
-              ))}
-            </div>
-
             <p className="text-white/75 text-lg text-center">
               {movie.overview}
             </p>
+          </div>
+        </div>
+        <div className=" flex flex-col bg-card rounded-2xl p-5 gap-5 justify-center">
+          <div className="flex flex-wrap justify-center gap-5">
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaCalendarAlt className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">
+                Release Date
+              </span>
+              <span>{movie.release_date}</span>
+            </div>
+
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaClock className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">Runtime</span>
+              <span>{movie.runtime} min</span>
+            </div>
+
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaMoneyBillWave className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">Budget</span>
+              <span>${movie.budget.toLocaleString()}</span>
+            </div>
+
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaChartLine className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">Revenue</span>
+              <span>${movie.revenue.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2">
+            {movie.genres.map((genre) => (
+              <span
+                className="flex bg-secondary rounded-lg px-3 py-1 text-sm gap-2"
+                key={genre.id}
+              >
+                {genre.name}
+                <FaTags className="text-muted-foreground self-center" />
+              </span>
+            ))}
           </div>
         </div>
 

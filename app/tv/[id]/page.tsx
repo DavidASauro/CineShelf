@@ -72,58 +72,56 @@ const TvPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           {/* Release Date, episode count, episode length, Genre Tags, status */}
           <div className="flex flex-col items-center flex-1 bg-card rounded-2xl p-10 gap-5">
             <h2 className="text-2xl text-center">Overview</h2>
-
-            <div className="flex flex-wrap justify-center gap-5">
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaCalendarAlt className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  First air date
-                </span>
-                <span>{show.first_air_date}</span>
-              </div>
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaListOl className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  Number of episodes
-                </span>
-                <span>{show.number_of_episodes}</span>
-              </div>
-
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaClock className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  Episode length
-                </span>
-                <span>
-                  {show.episode_run_time[0] > 0
-                    ? `${show.episode_run_time}`
-                    : "N/A"}{" "}
-                  min
-                </span>
-              </div>
-
-              <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
-                <FaBroadcastTower className="text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  Show status
-                </span>
-                <span>{show.status}</span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-2">
-              {show.genres.map((genre) => (
-                <span
-                  className="flex bg-secondary rounded-lg px-3 py-1 text-sm gap-2"
-                  key={genre.id}
-                >
-                  {genre.name}
-                  <FaTags className="text-muted-foreground self-center" />
-                </span>
-              ))}
-            </div>
-
             <p className="text-white/75 text-lg text-center">{show.overview}</p>
+          </div>
+        </div>
+        <div className=" flex flex-col bg-card rounded-2xl p-5 gap-5 justify-center">
+          <div className="flex flex-wrap justify-center gap-5">
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaCalendarAlt className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">
+                First air date
+              </span>
+              <span>{show.first_air_date}</span>
+            </div>
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaListOl className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">
+                Number of episodes
+              </span>
+              <span>{show.number_of_episodes}</span>
+            </div>
+
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaClock className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">
+                Episode length
+              </span>
+              <span>
+                {show.episode_run_time[0] > 0
+                  ? `${show.episode_run_time}`
+                  : "N/A"}{" "}
+                min
+              </span>
+            </div>
+
+            <div className="bg-secondary rounded-lg p-3 flex flex-col items-center gap-1 w-fit">
+              <FaBroadcastTower className="text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">Show status</span>
+              <span>{show.status}</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2">
+            {show.genres.map((genre) => (
+              <span
+                className="flex bg-secondary rounded-lg px-3 py-1 text-sm gap-2"
+                key={genre.id}
+              >
+                {genre.name}
+                <FaTags className="text-muted-foreground self-center" />
+              </span>
+            ))}
           </div>
         </div>
 
@@ -136,7 +134,7 @@ const TvPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           <h2 className="text-2xl text-center mb-4">
             Tv Shows Similar to {show.name}
           </h2>
-          <MediaTable media={recommendations} type="tvshow" />
+          <MediaTable media={recommendations} type="tv" />
         </div>
       </div>
     </div>
