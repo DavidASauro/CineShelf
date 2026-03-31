@@ -20,7 +20,6 @@ const SearchBar = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const isOpen = search.trim().length > 0 && results.length > 0;
-  0;
 
   useEffect(() => {
     const controller = new AbortController();
