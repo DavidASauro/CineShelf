@@ -15,13 +15,14 @@ export default async function Home() {
     TMDBMovieResponseType,
     TMDBTvShowResponseType,
   ] = await Promise.all([
-    fetch(
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-      { headers },
-    ).then((res) => res.json()),
-    fetch("https://api.themoviedb.org/3/trending/tv/week", { headers }).then(
-      (res) => res.json(),
-    ),
+    fetch("https://api.themoviedb.org/3/movie/popular", {
+      headers,
+      next: { revalidate: 86400 },
+    }).then((res) => res.json()),
+    fetch("https://api.themoviedb.org/3/trending/tv/week", {
+      headers,
+      next: { revalidate: 86400 },
+    }).then((res) => res.json()),
   ]);
 
   return (
